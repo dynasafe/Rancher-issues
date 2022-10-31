@@ -1,0 +1,20 @@
+cluster_name: esunpoc
+kubernetes_version: "v1.24.4-rancher1-1"
+nodes:
+  - address: 10.250.128.49
+    user: docker
+    role: [controlplane,worker,etcd]
+  - address: 10.250.128.105
+    user: docker
+    role: [controlplane,worker,etcd]
+  - address: 10.250.128.108
+    user: docker
+    role: [controlplane,worker,etcd]
+services:
+  etcd:
+    backup_config:
+      enabled: true
+      interval_hours: 6
+      retention: 60
+network:
+  plugin: flannel
